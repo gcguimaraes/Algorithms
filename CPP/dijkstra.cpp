@@ -1,3 +1,5 @@
+// The graph's pair<int, int> should be {distance, vertex}
+
 #include <bits/stdc++.h>
 
 using namespace std;
