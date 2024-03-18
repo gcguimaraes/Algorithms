@@ -1,3 +1,10 @@
-dijkstra.cpp -> Working
-template.cpp -> Working
+Working <- dijkstra.cpp
+Working <- template.cpp
 
+NOT TESTED <- coin_change.py
+NOT TESTED <- kmp.py
+NOT TESTED <- knapsack.py
+NOT TESTED <- longest_common_subsequence.py
+NOT TESTED <- longest_palindromic_substring.py
+NOT TESTED <- mdc_mmc.py
+NOT TESTED <- merge_sort.py
