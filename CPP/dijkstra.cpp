@@ -23,7 +23,7 @@ vector<int> dijkstra(int s, int n) {
         if (dist != d[v])
             continue;
             
-        for (dv : graph[v]) {
+        for (ii dv : graph[v]) {
             int newDist = dist + dv.first;
             int next = dv.second;
             if (newDist < d[next]) {
