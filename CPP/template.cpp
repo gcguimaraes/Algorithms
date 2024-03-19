@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define INF 1e9
+#define INF 1000000000
 #define ii pair<int, int>
 
 int main() {
