@@ -17,10 +17,7 @@ vector<int> dijkstra(int s, int n) {
     pq.push({0, s});
     
     while (!pq.empty()) {
-        ii dv = pq.top(); pq.pop();
-       
-        int dist = dv.first;
-        int v = dv.second;
+        auto [dist, v] = pq.top(); pq.pop();
         
         if (dist != d[v])
             continue;
