@@ -22,9 +22,8 @@ vector<int> dijkstra(int s, int n) {
         if (dist != d[v])
             continue;
             
-        for (ii dv : graph[v]) {
-            int newDist = dist + dv.first;
-            int next = dv.second;
+        for (auto [len, next] : graph[v]) {
+            int newDist = dist + len;
             if (newDist < d[next]) {
                 d[next] = newDist;
                 pq.push({newDist, next});
