@@ -10,7 +10,7 @@ using namespace std;
 vector<vector<ii>> graph;
 
 vector<int> dijkstra(int s, int n) {
-    vector<int> d(n, INF);
+    vector<int> d(n+1, INF);
     d[s] = 0;
     
     priority_queue<ii, vector<ii>, greater<ii>> pq;
