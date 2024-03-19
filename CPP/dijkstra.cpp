@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#define INF 1e9
+#define INF 1000000000
 #define ii pair<int, int>
 
 vector<vector<ii>> graph;
