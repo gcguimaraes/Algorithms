@@ -5,7 +5,6 @@ vector<bool> visited;
 vector<vector<int>> graph;
 const int N = 1000;
 int capacity[N+1][N+1];
-int n;
 
 bool dfs(int u, int t) {
     visited[u] = true;
