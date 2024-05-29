@@ -8,9 +8,13 @@ all the shortest distances.
 */
 
 const int INF = 1e9;
-const int MAXN = 1000;
-vector<vector<int>> graph;
-int weights[MAXN][MAXN];
+using ii = pair<int, int>;
+
+/*
+GRAPH'S PAIR IS {LENGTH, VERTEX}
+*/
+
+vector<vector<ii>> graph;
 int n;
 
 vector<int> bellmanFord(int s, int t) {
@@ -24,15 +28,16 @@ vector<int> bellmanFord(int s, int t) {
         
         for (int v = 0; v < n; v++) {
             if (d[v] != INF) {
-                for (int next : graph[v]) {
-                    if (d[v] + weights[v][next] < d[next]) {
-                        d[next] = d[v] + weights[v][next];
+                for (auto[len, next] : graph[v]) {
+                    if (d[v] + len < d[next]) {
+                        d[next] = d[v] + len;
                         lastRelaxedVertex = next;
                         any = true;
                     }
                 }
             }
         }
+        
         if (!any)
             break;
     }
