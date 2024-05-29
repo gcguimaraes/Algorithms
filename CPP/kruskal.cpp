@@ -1,6 +1,8 @@
 /*
   MST (Kruskal algorithm)
   Utilizes UnionFind and Edge structures. Edge only accepts integer edge weights.
+  For maximum spanning tree, just turn the edge weights negative.
+  Also works for minimum edge product.
 */
 
 
