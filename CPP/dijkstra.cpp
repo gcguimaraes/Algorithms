@@ -1,11 +1,9 @@
-// The graph's pair<int, int> should be {distance, vertex}
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-#define INF 1000000000
+const int INF = 1e9;
 #define ii pair<int, int>
+
+/*
+GRAPH'S PAIR IS {LENGTH, VERTEX}
+*/
 
 vector<vector<ii>> graph;
 
