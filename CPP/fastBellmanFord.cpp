@@ -1,4 +1,5 @@
 const int INF = 1e9;
+// {vertex, distance}
 vector<vector<pair<int, int>>> adj;
 
 bool spfa(int s, vector<int>& d) {
