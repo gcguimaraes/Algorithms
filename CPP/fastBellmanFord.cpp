@@ -13,14 +13,10 @@ bool spfa(int s, vector<int>& d) {
     q.push(s);
     inqueue[s] = true;
     while (!q.empty()) {
-        int v = q.front();
-        q.pop();
+        int v = q.front(); q.pop();
         inqueue[v] = false;
 
-        for (auto edge : adj[v]) {
-            int to = edge.first;
-            int len = edge.second;
-
+        for (auto [to, len] : adj[v]) {
             if (d[v] + len < d[to]) {
                 d[to] = d[v] + len;
                 if (!inqueue[to]) {
