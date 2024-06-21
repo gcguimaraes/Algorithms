@@ -51,7 +51,7 @@ vector<Edge> edges;
 // read edges here
 sort(edges.begin(), edges.end());
 
-int n = edges.size();
+int n = 0; // PUT VERTEX COUNT HERE
 UnionFind uf = UnionFind(n);
 vector<Edge> mst;
 mst.reserve(n-1);
