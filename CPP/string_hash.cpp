@@ -10,3 +10,6 @@ long long compute_hash(string const& s) {
     return hash_value;
 }
 // precomputing the powers of p might give a performance boost
+// 10^6 comparisons gives a collision chance of about 1e-3.
+// to reduce that chance, hash the string s with 2 functions,
+// each one with different p and m
