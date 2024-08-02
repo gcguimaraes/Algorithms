@@ -32,6 +32,6 @@ void find_cutpoints() {
     low.assign(n, -1);
     for (int i = 0; i < n; ++i) {
         if (!visited[i])
-            dfs (i);
+            dfs(i);
     }
 }
