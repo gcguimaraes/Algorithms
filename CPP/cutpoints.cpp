@@ -1,6 +1,5 @@
-int n; // number of nodes
+int n;
 vector<vector<int>> adj;
-
 vector<bool> visited, is_cutpoint;
 vector<int> tin, low;
 int timer;
