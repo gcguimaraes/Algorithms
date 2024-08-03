@@ -1,81 +1,100 @@
-const int MAXN = 1e5;
-
-struct SegmentTree {
-    struct Segment {
-        int b, e, sum;
+class LazySegmentTree {
+    struct Node {
+        int min_val;
+        int count;
+        int lazy;
     };
 
+    std::vector<Node> tree;
     int n;
-    Segment *t;
-    int *lazy;
+
+    void buildTree(int v, int tl, int tr) {
+        if (tl == tr) {
+            tree[v] = {0, 1, 0};
+        } else {
+            int tm = (tl + tr) / 2;
+            buildTree(v*2, tl, tm);
+            buildTree(v*2+1, tm+1, tr);
+            merge(v);
+        }
+    }
+
+    void apply(int v, int tl, int tr, int val) {
+        tree[v].min_val += val;
+        tree[v].lazy += val;
+    }
+
+    void push(int v, int tl, int tr) {
+        if (tree[v].lazy != 0) {
+            int tm = (tl + tr) / 2;
+            apply(v*2, tl, tm, tree[v].lazy);
+            apply(v*2+1, tm+1, tr, tree[v].lazy);
+            tree[v].lazy = 0;
+        }
+    }
+
+    void merge(int v) {
+        if (tree[v*2].min_val < tree[v*2+1].min_val) {
+            tree[v].min_val = tree[v*2].min_val;
+            tree[v].count = tree[v*2].count;
+        } else if (tree[v*2].min_val > tree[v*2+1].min_val) {
+            tree[v].min_val = tree[v*2+1].min_val;
+            tree[v].count = tree[v*2+1].count;
+        } else {
+            tree[v].min_val = tree[v*2].min_val;
+            tree[v].count = tree[v*2].count + tree[v*2+1].count;
+        }
+    }
+
+    void updateRange(int v, int tl, int tr, int l, int r, int addend) {
+        if (l > r) return;
+        if (l == tl && r == tr) {
+            apply(v, tl, tr, addend);
+        } else {
+            push(v, tl, tr);
+            int tm = (tl + tr) / 2;
+            updateRange(v*2, tl, tm, l, std::min(r, tm), addend);
+            updateRange(v*2+1, tm+1, tr, std::max(l, tm+1), r, addend);
+            merge(v);
+        }
+    }
+
+    std::pair<int, int> queryRange(int v, int tl, int tr, int l, int r) {
+        if (l > r) return {INT_MAX, 0};
+        if (l <= tl && tr <= r) {
+            return {tree[v].min_val, tree[v].count};
+        }
+        push(v, tl, tr);
+        int tm = (tl + tr) / 2;
+        auto left = queryRange(v*2, tl, tm, l, std::min(r, tm));
+        auto right = queryRange(v*2+1, tm+1, tr, std::max(l, tm+1), r);
+        if (left.first < right.first) {
+            return left;
+        } else if (left.first > right.first) {
+            return right;
+        } else {
+            return {left.first, left.second + right.second};
+        }
+    }
+
+public:
+    LazySegmentTree(int _n) {
+    	n = _n;
+        tree.resize(4*n);
+        buildTree(1, 0, n-1);
+    }
+
+    void updateRange(int l, int r, int addend) {
+        updateRange(1, 0, n-1, l, r, addend);
+    }
+
+    std::pair<int, int> queryRange(int l, int r) {
+        return queryRange(1, 0, n-1, l, r);
+    }
     
-    SegmentTree(vector<int> &a) {
-        n = a.size();
-        t = new Segment[3*MAXN];
-        lazy = new int[3*MAXN];
-        build(a, 1, 0, n-1);
-    }
-
-    void build(vector<int> &a, int node, int l, int r) {
-        t[node].b = l;
-        t[node].e = r;
-        if (l == r)
-            t[node].sum = a[l];
-        else {
-            int mid = (l + r) / 2;
-            build(a, 2*node, l, mid);
-            build(a, 2*node+1, mid+1, r);
-            t[node].sum = t[2*node].sum + t[2*node+1].sum;
-        }
-    }
-
-    int query(int node, int l, int r) {
-        if (t[node].b > r || t[node].e < l)
-            return 0; // neutral
-        
-        if (lazy[node] != 0) {
-            t[node].sum += (t[node].e - t[node].b + 1) * lazy[node];
-            if (t[node].b != t[node].e) { // if leaf
-                lazy[2*node] += lazy[node];
-                lazy[2*node+1] += lazy[node];
-            }
-            lazy[node] = 0;
-        }
-
-        if (t[node].b >= l && t[node].e <= r)
-            return t[node].sum;
-        
-        int s1 = query(2*node, l, r);
-        int s2 = query(2*node+1, l, r);
-        return s1 + s2;
-    }
-    int query(int l, int r) { return query(1, l, r); }
-
-    void update(int node, int l, int r, int val) {
-        if (lazy[node] != 0) {
-            t[node].sum += (t[node].e - t[node].b + 1) * lazy[node];
-            if (t[node].b != t[node].e) { // if leaf
-                lazy[2*node] += lazy[node];
-                lazy[2*node+1] += lazy[node];
-            }
-            lazy[node] = 0;
-        }
-
-        if (t[node].b > r || t[node].e < l)
-            return;
-        
-        if (t[node].b >= l && t[node].e <= r) { // if this segment is within updated segment
-            t[node].sum += (t[node].e - t[node].b + 1) * val;
-            if (t[node].b != t[node].e) { // if leaf
-                lazy[2*node] += val;
-                lazy[2*node+1] += val;
-            }
-            return;
-        }
-        
-        update(2*node, l, r, val);
-        update(2*node+1, l, r, val);
-        t[node].sum = t[2*node].sum + t[2*node+1].sum;
-    }
-    void update(int l, int r, int val) { update(1, l, r, val); }
+    int get_maintained(){
+    	pair<int, int> res = queryRange(0, n-1);
+    	assert(res.first == 0);
+    	return n - res.second;
+    };
 };
