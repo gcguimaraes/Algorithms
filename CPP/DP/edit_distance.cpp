@@ -9,8 +9,8 @@ int editDistance(int i, int j) {
 
     if (a[i] == b[j]) return dp[i][j] = editDistance(i-1, j-1);
     return dp[i][j] = 1 + min(
-        editDistance(i, j-1),
-        editDistance(i-1, j),
-        editDistance(i-1, j-1)
+        editDistance(i, j-1), // insert b[j] onto a
+        editDistance(i-1, j), // remove a[i]
+        editDistance(i-1, j-1) // a[i] = b[j]
     );
 }
