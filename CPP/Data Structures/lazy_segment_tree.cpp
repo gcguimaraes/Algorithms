@@ -44,7 +44,7 @@ class LazySegmentTree {
 
     void push(int v) {
         if (t[v].lazy) {
-            t[v].min += t[v].lazy;
+            t[v].min += t[v].lazy; // t[v].sum += delta * (t[v].r - t[v].l + 1)
             if (t[v].l != t[v].r) { // not leaf
                 t[2*v].lazy += t[v].lazy;
                 t[2*v+1].lazy += t[v].lazy;
