@@ -1,6 +1,7 @@
 This stuff still needs to be tested
 Vec.dot()
-perpendicular()
-parallel() (Line and Vec)
+Vec.perpendicular()
+Vec.parallel()
+parallel(Line)
 Line struct
 intersection(Line)
