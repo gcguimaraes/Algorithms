@@ -3,65 +3,65 @@
 O(n) build
 O(logn) query
 O(logn) update
-Don't forget to update the merge function according to your needs.
 */
 
-const int MAXN = 1e5;
+class SegmentTree {
+    struct Segment {
+        int l, r, val;
+    };
+    static const int MAXN = 1e6 + 10;
+    const int NEUTRAL = 0;
+    Segment t[4*MAXN];
 
-struct SegmentTree {
-    int n, t[4*MAXN];
-    
-    SegmentTree(vector<int> &a) {
-        n = a.size();
-        build(a, 1, 0, n-1);
-    }
-    
-    int merge(int a, int b) {
-        return a * b;
-    }
-    
     void build(vector<int> &a, int v, int tl, int tr) {
-        if (tl == tr) {
-            t[v] = a[tl];
-        } else {
-            int tm = (tl + tr) / 2;
-            build(a, v*2, tl, tm);
-            build(a, v*2+1, tm+1, tr);
-            t[v] = merge(t[v*2], t[v*2+1]);
-        }
-    }
-    
-    int query(int l, int r) {
-        return query(l, r, 1, 0, n-1);
-    }
-    
-    int query(int l, int r, int v, int tl, int tr) {
-        if (l > r)
-            return 1;
-        if (l == tl && r == tr)
-            return t[v];
-        int tm = (tl + tr) / 2;
-        return merge(
-            query(l, min(r, tm), v*2, tl, tm),
-            query(max(l, tm+1), r, v*2+1, tm+1, tr)
-        );
-    }
-    
-    void update(int pos, int new_val) {
-        update(pos, new_val, 1, 0, n-1);
-    }
-    
-    void update(int pos, int new_val, int v, int tl, int tr) {
-        if (tl == tr) {
-            t[v] = new_val;
-        } 
+        t[v] = {tl, tr, 0};
+        if (tl == tr)
+            t[v].val = a[tl];
         else {
-            int tm = (tl + tr) / 2;
-            if (pos <= tm)
-                update(pos, new_val, v*2, tl, tm);
-            else
-                update(pos, new_val, v*2+1, tm+1, tr);
-            t[v] = merge(t[v*2], t[v*2+1]);
+            int mid = (tl + tr) / 2;
+            build(a, 2*v, tl, mid);
+            build(a, 2*v+1, mid+1, tr);
+            merge(v);
         }
+    }
+
+    void merge(int v) {
+        t[v].val = t[2*v].val + t[2*v+1].val;
+    }
+    int merge(int a, int b) {
+        return a + b;
+    }
+
+    int query(int v, int l, int r) {
+        if (t[v].l > r || t[v].r < l)
+            return NEUTRAL;
+        if (t[v].l >= l && t[v].r <= r)
+            return t[v].val;
+        int left = query(2*v, l, r);
+        int right = query(2*v+1, l, r);
+        return merge(left, right);
+    }
+
+    void update(int v, int i, int delta) {
+        if (t[v].l > i || t[v].r < i)
+            return;
+        if (t[v].l >= i && t[v].r <= i) {
+            t[v].val += delta;
+            return;
+        }
+        update(2*v, i, delta);
+        update(2*v+1, i, delta);
+        merge(v);
+    }
+
+public:
+    SegmentTree(vector<int> &a) {
+        build(a, 1, 0, a.size()-1);
+    }
+    int query(int l, int r) {
+        return query(1, l, r);
+    }
+    void update(int i, int delta) {
+        update(1, i, delta);
     }
 };
