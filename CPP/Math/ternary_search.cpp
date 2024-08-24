@@ -12,9 +12,5 @@ while (high-low > eps) {
     double v2 = volume(mid2);
 
     if (v1 < v2) low = mid1;
-    else if (v1 == v2) {
-        low = mid1;
-        high = mid2;
-    }
     else high = mid2;
 }
