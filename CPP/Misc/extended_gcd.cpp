@@ -5,3 +5,9 @@ tuple<int, int, int> extendedGcd(int a, int b) {
     auto[q, w, e] = extendedGcd(b, a%b);
     return make_tuple(q, e, w-e*(a/b));
 }
+
+int multiplicative_inverse(int n, int mod) {
+    // ax + (mod)y = 1 (aka their difference is 1) 
+    auto[g, x, y] = extendedGcd(n, mod);
+    return (x % mod + mod) % mod;
+}
