@@ -1,5 +1,5 @@
 /*
-j(n, k) returns the 1-indexed survivor out of n people and step k.
+josephus(n, k) returns the 1-indexed survivor out of n people and step k.
 Notice that the first dude to die is 'k'. Then, we recursively call
 josephus to solve for the n-1 dudes remaining (starting from k+1),
 add k to that indexing (so it becomes the indexing of the original circle),
