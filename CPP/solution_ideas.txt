@@ -28,5 +28,6 @@ SOME USEFUL RANDOM NOTES:
 -> Soma dos termos de PG finita:   S = a1 * (q^n-1) / (q-1)
 -> Soma dos termos de PG infinita: S = a1 / (1-q)
 -> ax + by + c tem solução iff gcd(a, b) | c
--> Suppose you have a vector where all the numbers are distinct from each other. The length it must have to ensure you can make at least a triangle out of its numbers
+-> Suppose you have a vector where all the numbers are distinct from each other. The length it must have to ensure you can make at least a triangle out of its numbers.
 is 45, because the triangle inequality grows just as fast as fibonacci (and 45th fib is 1e9). Then, making 2 triangles is 48, and so on.
+-> "$" evaluates less than any letter. "~" evaluates larger than any letter.
