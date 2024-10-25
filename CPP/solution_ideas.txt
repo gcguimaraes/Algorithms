@@ -4,6 +4,7 @@ GENERAL:
 
 GRAPHS:
  - Amount of paths of length 'k' can be calculated by raising the adjacency matrix to the kth power.
+ - Amount of paths of length 'k' on a tree can be done with Centroid Decomposition.
 
 GREEDY:
  - Several greedy "grabbing" problems can be done with a priority queue. Keep grabbing or swap current with the worst
@@ -20,3 +21,12 @@ STRINGS:
 MATH:
  - If you have to solve an equation, you will very probably have to brute force the variables. Try to find if any
  variable divides another (so you brute force only through the divisors of the other)
+
+//_______________________________________________//
+
+SOME USEFUL RANDOM NOTES:
+-> Soma dos termos de PG finita:   S = a1 * (q^n-1) / (q-1)
+-> Soma dos termos de PG infinita: S = a1 / (1-q)
+-> ax + by + c tem solução iff gcd(a, b) | c
+-> Suppose you have a vector where all the numbers are distinct from each other. The length it must have to ensure you can make at least a triangle out of its numbers
+is 45, because the triangle inequality grows just as fast as fibonacci (and 45th fib is 1e9). Then, making 2 triangles is 48, and so on.
