@@ -1,5 +1,6 @@
 GENERAL:
- - Try binary searching the answer.
+ - Try binary/ternary searching the answer.
+ - You can try to map anything to graphs. Intersection of things, grouping of stuff, etc. Geometry to graphs is specially useful.
 
 GRAPHS:
  - Amount of paths of length 'k' can be calculated by raising the adjacency matrix to the kth power.
