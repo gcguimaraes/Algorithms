@@ -1,0 +1,21 @@
+GENERAL:
+ - Try binary searching the answer.
+
+GRAPHS:
+ - Amount of paths of length 'k' can be calculated by raising the adjacency matrix to the kth power.
+
+GREEDY:
+ - Several greedy "grabbing" problems can be done with a priority queue. Keep grabbing or swap current with the worst
+ you have already grabbed.
+ 
+DP:
+ - Try sorting something before doing the recursion.
+ - Stablish the opposite order DP (instead of minimum time to grab n objects, maximum objects grabbable with t time).
+
+STRINGS:
+ - Anything related with string lexicographic order can probably be done with a Suffix Array. If it has comparison
+ between two strings, you can even consider building a suffix array from the concatenation of the two strings.
+
+MATH:
+ - If you have to solve an equation, you will very probably have to brute force the variables. Try to find if any
+ variable divides another (so you brute force only through the divisors of the other)
