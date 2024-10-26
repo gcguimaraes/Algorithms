@@ -35,6 +35,7 @@ everyone on the main diagonal and on the parallel diagonals to the main). The su
 -> To count the amount of triangles with sides a, b, c such that a <= b <= c you can do the following: consider a, b and c as piles. Then,
 consider count(n, k) to be the function that returns the amount of ways you can fill the last k piles using at most n stones. Then, simply
 call count(n, 3).
+-> Log base conversion: log_a(b) = (loc_c(b) / log_c(a)) = (log2(b) / log2(a))
 
 STRINGS:
 -> "$" evaluates less than any letter. "~" evaluates larger than any letter.
