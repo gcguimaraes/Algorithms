@@ -129,3 +129,13 @@ struct Segment {
         return p1.dist(p2);
     }
 };
+
+int twicePolygonArea(vector<Point> &p) {
+    int n = p.size();
+    int area = 0;
+    for (int i = 0; i < n-1; i++) {
+        area += p[i].x * p[i+1].y - p[i+1].x * p[i].y;
+    }
+    area += p[n-1].x * p[0].y - p[0].x * p[n-1].y;
+    return abs(area);
+}
