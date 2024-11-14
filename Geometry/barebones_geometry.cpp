@@ -139,3 +139,9 @@ int twicePolygonArea(vector<Point> &p) {
     area += p[n-1].x * p[0].y - p[0].x * p[n-1].y;
     return abs(area);
 }
+
+const double PI = 4 * atan(1.0);
+
+inline double toRadians(int deg) {
+    return deg * PI / 180;
+}
