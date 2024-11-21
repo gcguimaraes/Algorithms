@@ -147,10 +147,10 @@ inline double toRadians(int deg) {
 }
 
 double circleSectorArea(double r, double theta) {
-	return r*r*theta/2;
+    return r*r*theta/2;
 }
 
 double triangleArea(double a, double b, double c) {
-	double s = (a + b + c) / 2.0;
-	return sqrt(s*(s-a)*(s-b)*(s-c));
+    double s = (a + b + c) / 2.0;
+    return sqrt(s*(s-a)*(s-b)*(s-c));
 }
