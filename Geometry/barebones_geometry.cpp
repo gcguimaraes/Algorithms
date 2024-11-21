@@ -145,3 +145,12 @@ const double PI = 4 * atan(1.0);
 inline double toRadians(int deg) {
     return deg * PI / 180;
 }
+
+double circleSectorArea(double r, double theta) {
+	return r*r*theta/2;
+}
+
+double triangleArea(double a, double b, double c) {
+	double s = (a + b + c) / 2.0;
+	return sqrt(s*(s-a)*(s-b)*(s-c));
+}
