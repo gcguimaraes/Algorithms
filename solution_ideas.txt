@@ -50,3 +50,12 @@ And that matrix is the following k*k matrix:
 STRINGS:
 -> "$" evaluates less than any letter. "~" evaluates larger than any letter.
 -> Substring search with Suffix Array: build the SA of the text (tlogt) and then binary search the pattern 'p' on it (remembering that the pattern is necessarily a prefix of a suffix of t). Each query then takes plogt time. Finding all repetitions can be done with a lower bound and upper bound binary search.
+
+GEOMETRY:
+A triangle ABC with sides a, b and c (a is opposite to A, b is opposite to B, c is opposite to C)
+COSINE LAW:
+a² = b² + c² -2bc cos(A)
+b² = a² + c² -2ac cos(B)
+c² = a² + b² -2ab cos(C)
+SINE LAW:
+sinA/a = sinB/b = sinC/c
