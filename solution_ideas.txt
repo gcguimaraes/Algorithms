@@ -1,6 +1,6 @@
 GENERAL:
  - Try binary/ternary searching the answer.
- - You can try to map anything to graphs. Intersection of things, grouping of stuff, etc. Geometry to graphs is specially useful.
+ - You can try to map anything to graphs. Intersection of things, grouping of stuff, etc. Geometry to graphs is specially useful. Another useful thing to approach as a graph is constraints between pairs of things ('a' iff not 'b') and then throw a bicolorability dfs.
 
 GRAPHS:
  - Amount of paths of length 'k' can be calculated by raising the adjacency matrix to the kth power.
