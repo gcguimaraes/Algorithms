@@ -4,8 +4,7 @@ class LazySegmentTree {
     };
 
     ii NEUTRAL = {INF, 1};
-    static const int MAXN = 200010;
-    Segment t[4*MAXN];
+    vector<Segment> t;
 
     void build(vector<int> &a, int v, int tl, int tr) {
         t[v] = {INF, 1, tl, tr, 0};
@@ -81,6 +80,7 @@ class LazySegmentTree {
 
 public:
     LazySegmentTree(vector<int> &a) {
+        t.resize(4*a.size());
         build(a, 1, 0, a.size()-1);
     }
 
