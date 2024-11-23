@@ -1,17 +1,9 @@
-/*
-0-indexed queries
-O(n) build
-O(logn) query
-O(logn) update
-*/
-
 class SegmentTree {
     struct Segment {
         int l, r, val;
     };
-    static const int MAXN = 1e6 + 10;
     const int NEUTRAL = 0;
-    Segment t[4*MAXN];
+    vector<Segment> t;
 
     void build(vector<int> &a, int v, int tl, int tr) {
         t[v] = {tl, tr, 0};
@@ -56,6 +48,7 @@ class SegmentTree {
 
 public:
     SegmentTree(vector<int> &a) {
+        t.resize(4*a.size());
         build(a, 1, 0, a.size()-1);
     }
     int query(int l, int r) {
