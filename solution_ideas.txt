@@ -24,6 +24,9 @@ STRINGS:
 MATH:
  - If you have to solve an equation, you will very probably have to brute force the variables. Try to find if any
  variable divides another (so you brute force only through the divisors of the other)
+ - Grundy number: is the MEX (minimum excluded) of all of the Grundy numbers of the states reachable from the current. If a
+game state is losing, its Grundy number is 0. The junction of several game "components" (each with several Grundy numbers) is
+done with XOR (and if it is 0, it means losing).
 
 //_________________________ USEFUL RANDOM NOTES _________________________//
 MATH:
