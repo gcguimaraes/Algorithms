@@ -8,6 +8,7 @@ conditions and only then try to fit them in. Maybe those conditions didn't affec
 GRAPHS:
  - Amount of paths of length 'k' can be calculated by raising the adjacency matrix to the kth power.
  - Amount of paths of length 'k' on a tree can be done with Centroid Decomposition.
+ - Anything relative to paths and subtree queries over a tree: Heavy Light Decomposition.
 
 GREEDY:
  - Several greedy "grabbing" problems can be done with a priority queue. Keep grabbing or swap current with the worst
