@@ -2,7 +2,7 @@ class SegmentTree {
     struct Segment {
         int l, r, val;
     };
-    const int NEUTRAL = 0;
+    int NEUTRAL = 0;
     vector<Segment> t;
 
     void build(vector<int> &a, int v, int tl, int tr) {
