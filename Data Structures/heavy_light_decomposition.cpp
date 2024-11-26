@@ -47,7 +47,7 @@ public:
     }
 
     // Now, the subtree of v is on the range [pos[v], pos[v]+sz[v]-1] on the segment tree.
-    // The path from v to the head of its heavy chain (h[v]) is [pos[next[v]], pos[v]] (because the
+    // The path from v to the head of its heavy chain (h[v]) is [pos[h[v]], pos[v]] (because the
     // heavy path was the first to be visited on the dfs). This gives extreme querying power
     // when building a segment tree from it.
 
