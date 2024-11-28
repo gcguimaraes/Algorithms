@@ -73,7 +73,7 @@ public:
             st.update(pos[b], pos[a], delta);
             return;
         }
-		st.update(pos[h[a]], pos[a], delta);
+	st.update(pos[h[a]], pos[a], delta);
         updatePath(p[h[a]], b, delta);
     }
 
