@@ -59,6 +59,14 @@ public:
         st.update(pos[u], pos[u] + sz[u] - 1, delta);
     }
 
+    int queryPath(int a, int b) {
+        if (pos[a] < pos[b]) swap(a, b);
+		if (h[a] == h[b]) {
+            return st.query(pos[b], pos[a]);
+        }
+        return st.query(pos[h[a]], pos[a]) + queryPath(p[h[a]], b);
+    }
+
     void updatePath(int a, int b, int delta) {
         if (pos[a] < pos[b]) swap(a, b);
 		if (h[a] == h[b]) {
